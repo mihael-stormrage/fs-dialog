@@ -4,11 +4,11 @@ import iconv from "iconv-lite"
 
 let OS = os.platform();
 
-export default function folder(prompt) {
+export function folder(prompt) {
   let path;
-  
+
   if (OS == "win32")
-    path = iconv.decode(execSync(`(new-object -COM 'Shell.Application').BrowseForFolder(0,'${prompt}',529,0).self.path`,{shell:"powershell"}), "cp866")
+    path = iconv.decode(execSync(`(new-object -COM 'Shell.Application').BrowseForFolder(0,'${prompt}',529,0).self.path`, { shell: "powershell" }), "cp866")
 
   else if (OS == "linux")
     path = execSync(`zenity --file-selection --directory --title "${prompt}"`).toString()
@@ -22,9 +22,9 @@ export default function folder(prompt) {
 
 export function file(prompt) {
   let path;
-  
+
   if (OS == "win32")
-    path = iconv.decode(execSync(`.\\chooser.ps1 -title "${prompt}"`,{shell:"powershell"}), "cp866")
+    path = iconv.decode(execSync(`.\\chooser.ps1 -title "${prompt}"`, { shell: "powershell" }), "cp866")
 
   else if (OS == "linux")
     path = execSync(`zenity --file-selection --title "${prompt}"`)
@@ -36,6 +36,6 @@ export function file(prompt) {
   return path;
 }
 
-// let prompt = "Select CultistSimulator_Data folder.";
+// let prompt = "Select _Data folder.";
 
 // console.log(file(prompt));

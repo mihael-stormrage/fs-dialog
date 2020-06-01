@@ -1,6 +1,6 @@
 {
   "name": "fs-dialog",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Native crossplatform filesystem dialogs support for Node.js",
   "type": "module",
   "main": "exec.js",
